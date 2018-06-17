@@ -5,6 +5,13 @@ public class SchoolManagement {
 	private String schoolname;
 	private String schooladdress;
 	private String schoolphno;
+	private int id;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getSchoolfounder() {
 		return schoolfounder;
 	}

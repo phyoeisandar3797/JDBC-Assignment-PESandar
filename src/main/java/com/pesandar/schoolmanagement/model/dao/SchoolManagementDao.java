@@ -2,6 +2,7 @@ package com.pesandar.schoolmanagement.model.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -35,7 +36,20 @@ public class SchoolManagementDao {
 		}return schoolList;
 		
 	}
-	
-	
-
+	public void insertNextData(SchoolManagement schoolmanagement1) {
+		String sql="insert into schoolmanagement values(?,?,?,?,?)";
+		try(Connection connection=ConnectionManager.getInstance();
+			PreparedStatement prestatement=connection.prepareStatement(sql)) {
+			prestatement.setInt(1,schoolmanagement1.getId());
+		prestatement.setString(2,schoolmanagement1.getSchoolname());
+		prestatement.setString(3,schoolmanagement1.getSchoolfounder());
+		prestatement.setString(4,schoolmanagement1.getSchooladdress());
+		prestatement.setString(5,schoolmanagement1.getSchoolphno());
+		
+		prestatement.executeUpdate(sql);
+		
+		} catch (Exception e) {
+				e.printStackTrace();
+			}
+	}
 }
